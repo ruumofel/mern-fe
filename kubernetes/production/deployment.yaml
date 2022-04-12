@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-fe
+  namespace: production
+  labels:
+    app: mern-fe
+spec:
+  selector:
+    matchLabels:
+      app: mern-fe
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: mern-fe
+    spec:
+      containers:
+      - name: mern-fe
+        image: agambewe/mern-fe:latest
+        imagePullPolicy: Always
+        env:
+            - name: REACT_APP_BASE_URL
+              value: "https://be.bewe.tech"
+        ports:
+        - containerPort: 3000
+        resources:
+            limits:
+              cpu: 700m
+              memory: 800Mi
+            requests:
+              cpu: 200m
+              memory: 400Mi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mern-fe-service
+  namespace: production
+spec:
+  type: ClusterIP
+  selector:
+    app: mern-fe
+  ports:
+  - port: 3000 
+    protocol: "TCP"
