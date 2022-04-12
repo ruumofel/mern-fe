@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
       - name: mern-fe
-        image: agambewe/mern-fe:latest
+        image: ruum/mern-fe:latest
         imagePullPolicy: Always
         env:
             - name: REACT_APP_BASE_URL
-              value: "https://be.bewe.tech"
+              value: "https://stag-be.sumateracommodity.com"
         ports:
         - containerPort: 3000
         resources:
