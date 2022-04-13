@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: Always
         env:
             - name: REACT_APP_BASE_URL
-              value: "https://stag-be.sumateracommodity.com"
+              value: "https://be.sumateracommodity.com"
         ports:
         - containerPort: 3000
         resources:
